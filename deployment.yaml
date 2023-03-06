@@ -18,7 +18,7 @@ jobs:
 
       - name: Push to NTNU GitLab Workspace  # An optional Name
         env:  # Importing needed variables defined in the environment or repository level "secrets and variables".
-          TOKEN: $ASSIGNMENT1TOKEN  # Defining a variable names TOKEN in which holds the GITLAB_TOKEN defined
+          TOKEN: $ASSIGNMENT1TOEN  # Defining a variable names TOKEN in which holds the GITLAB_TOKEN defined
                                              # in the environment(MyEnvironmentName) -> secrets
           # For the first push, An owner token is needed.
         run: |
