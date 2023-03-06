@@ -9,6 +9,8 @@ import (
 	"net/http"
 )
 
+//the func that sends http-requests for all the queries, more or less a duplicate of the 
+//client code from 05-REST-client
 func Client(url string) (*http.Response, error) {
 
 	r, err := http.NewRequest(http.MethodGet, url, nil)
@@ -41,6 +43,8 @@ func Client(url string) (*http.Response, error) {
 	return res, nil
 }
 
+//a generic function that unmarshals the contents of a response body
+//into either a university or country slice
 func arrGen[v *[]University | *[]Country](res *http.Response, arr v) (error) {
 
 	body, err := io.ReadAll(res.Body)
@@ -59,6 +63,8 @@ func arrGen[v *[]University | *[]Country](res *http.Response, arr v) (error) {
 	return nil
 }
 
+//finds the languages and maps for a university, as decided by which country it belongs to
+//does this by looping through the countries slice for EACH university in the passed slice/array
 func addMisc[v []University | *[1]University](arr v) (error) {
 	for i := 0; i < len(arr); i++ {
 		 e := &arr[i]

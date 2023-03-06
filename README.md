@@ -15,3 +15,7 @@ diag is a status endpoint that displays the status code of the two APIs, the cur
 
 ## to-do
  - fix functionality for those universites whose country name in hipolabs-univeristy API do not match the common-name of the correspoding country in the RESTcountries API. (E.g. Russian universities are in the country Russian Federation in the hipolabs API, while the common name of that country is Russia in RESTcountries)
+ - refactor from json.Unmarshall to json.Decode. Unmarshall has been for purely practical purposese: I was not able to make decode work properly until fairly close to the deadline
+ - Clean up in the constants.go-file: some constant may be obsolete
+ - get the automation functionality from the deployment.yaml
+ - fix the limits-function

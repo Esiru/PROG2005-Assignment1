@@ -3,6 +3,8 @@ package RESTUniversity
 //Default port
 const DEFAULT_PORT = "8080"
 
+//remaining consts contain complete or partial URLs for unisearcher and the two attendant APIs
+//some may be obsolete
 const UNISEARCHER_PATH = "/unisearcher/v1/"
 
 const UNIVERSITIES_PATH = "http://universities.hipolabs.com/search?name="
