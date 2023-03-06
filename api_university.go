@@ -97,7 +97,11 @@ func HandleCountry(w http.ResponseWriter, s []string) {
 			unis = append(unis, findUniversityNameNeighbor(s[1], x)...)
 		} else if limit > 0 {
 			for i := 0; i < limit; i++ {
-				unis = append(unis, replySingUniversity(s[1], x))	
+				tmp := replySingUniversity(s[1], x)
+				if tmp.Country != "" {
+					unis = append(unis, tmp)
+				}
+				//log.Println(unis)	
 			}
 		}
 	}
@@ -107,11 +111,10 @@ func HandleCountry(w http.ResponseWriter, s []string) {
 }
 
 func replySingUniversity(name string, country Country) University {
-	var tmp University
 	for _, val := range universities {
-		if val.Name ==  country.Name["common"] && 
+		if val.Country == country.Name["common"] && 
 		strings.Contains(strings.ToUpper(val.Name), strings.ToUpper(name)) {
-			return tmp
+			return val
 		}
 	}
 	return University{}
