@@ -11,7 +11,7 @@ jobs:
     # level secrets from your GitHub repo settings => "secrets and variables"
     # Then you need to comment away the following line: environment: MyEnvironmentName.
     # If GitHub can't find an environment in yaml file, will read repository level "secrets and variables".
-    environment: MyEnvironmentName # The GitHub Environment in which we have set up for secrets (tokens, passwords, ...)
+    environment: Deployment # The GitHub Environment in which we have set up for secrets (tokens, passwords, ...)
     steps:
       - name: Checkout # This step is a security check default by the GitHub. Use it once at each job.
         uses: actions/checkout@v2 # predefined by GitHub
