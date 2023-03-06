@@ -26,7 +26,6 @@ func HandlerUniversity() func(http.ResponseWriter, *http.Request) {
 }
 
 func handleUniversityGet(w http.ResponseWriter, r *http.Request) {
-	log.Println(len(countries))
 	if len(countries) == 0 {
 		res, err := Client(COUNTRIES_ALL_PATH)
 		if err != nil {
@@ -34,7 +33,6 @@ func handleUniversityGet(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		arrGen(res, &countries)
-		// log.Println(countries[1].Name["common"])
 	}
 	if len(universities) == 0 {
 		res, err := Client(UNIVERSITIES_ALL_PATH)
@@ -44,16 +42,12 @@ func handleUniversityGet(w http.ResponseWriter, r *http.Request) {
 		}
 		arrGen(res, &universities)
 	}
-	//log.Println(universities[1])
 	http.Header.Add(w.Header(), "content-type", "application/json")
 
 	parts := strings.Split(string(r.URL.Path), "/")
 	s := make([]string, 0)
-	//log.Println(len(parts))
-	log.Println(parts)
 
 	if len(parts) == 5 {
-		s = append(s, parts[4])
 		writeUniversities(w, findUniversityName(parts[4]))
 	}else if len(parts) == 6 {
 		s = append(s, parts[4], parts[5])
@@ -78,7 +72,6 @@ func HandleCountry(w http.ResponseWriter, s []string) {
 	var unis []University
 	var country Country
 	var neighbours []Country
-	log.Println(s)
 	
 	for _, val := range countries {
 		if val.Name["common"] == strings.Title(s[0]) {
@@ -89,7 +82,6 @@ func HandleCountry(w http.ResponseWriter, s []string) {
 
 	if len(s) == 3 && s[2] != "" {
 		tmp := strings.SplitAfter(s[2], "=")
-		//log.Println(tmp)
 		_, err := fmt.Sscan(tmp[1], &limit)
 		if err != nil {
 			limit = 0
